@@ -5,6 +5,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule} from "@angular/http";
 
 import { AppComponent } from './app.component';
@@ -16,6 +19,16 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { HomeModule } from './home/home.module';
+
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyBFkEVrX8MvWFdFvoitrY8dLwe9nr5txoY",
+    authDomain: "futbol-app-5f228.firebaseapp.com",
+    databaseURL: "https://futbol-app-5f228.firebaseio.com",
+    projectId: "futbol-app-5f228",
+    storageBucket: "futbol-app-5f228.appspot.com",
+    messagingSenderId: "166693050149"
+};
 
 @NgModule({
   declarations: [
@@ -33,7 +46,10 @@ import { HomeModule } from './home/home.module';
     RouterModule,
     AppRoutingModule,
     HomeModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
